@@ -8,6 +8,10 @@ const app = express();
 app.use(express.json());
 app.use("/url", urlRoute);
 
+app.get("/", (req, res) => {
+  return res.end("<h1>Welcome to URL Shortener Backend project</h1>");
+});
+
 app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
